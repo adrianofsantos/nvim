@@ -1,8 +1,12 @@
-return { "nvim-treesitter/nvim-treesitter", 
-  build = ":TSUpdate",
-  config = function()
-    local builtin = require("telescope.builtin")
-    vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-  end
+return {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	config = function()
+		local config = require("nvim-treesitter.configs")
+		config.setup({
+			auto_install = true,
+			highlight = { enable = true },
+			indent = { enable = true },
+		})
+	end,
 }
